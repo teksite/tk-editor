@@ -9,6 +9,10 @@ import { check, results, sleep } from "./lib.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const require = createRequire(import.meta.url);
+const packageVersion = JSON.parse(
+  readFileSync(join(root, "package.json"), "utf8")
+).version;
+
 
 /* ---------- 1) SSR / Node (no window) ---------- */
 console.log("\n=== package: SSR / exports");
@@ -125,8 +129,7 @@ console.log("\n=== package: ESM and auto builds");
 {
   let pg = await newPage(); await pg.goto(base + "/page/esm.html"); await sleep(500);
   const r = await pg.evaluate(() => window.__r);
-  check("ESM in the browser: import + attach", r && r.same && r.n === 1 && r.ver === "1.0.0", r);
-  check("no errors (ESM)", pg.errs.length === 0, pg.errs); await pg.close();
+check("ESM in the browser: import + attach", r && r.same && r.n === 1 && r.ver === packageVersion, r);  check("no errors (ESM)", pg.errs.length === 0, pg.errs); await pg.close();
   pg = await newPage(); await pg.goto(base + "/page/auto-esm.html"); await sleep(700);
   const a = await pg.evaluate(() => ({ hosts: document.querySelectorAll(".pe-host").length, h: ProEditor.get(document.getElementById("t")) && ProEditor.get(document.getElementById("t")).options.minHeight, n: ProEditor.get(document.getElementById("n")) }));
   check("auto.esm: only data-tk-editor textareas are enhanced", a.hosts === 1 && a.h === 222 && a.n === null, a);
