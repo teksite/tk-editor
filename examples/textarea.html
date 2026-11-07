@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ProEditor — turn a textarea into a WYSIWYG editor</title>
+<link rel="stylesheet" href="../dist/pro-editor.css" />
+<style>
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;max-width:860px;margin:2rem auto;padding:0 1rem}
+  label{display:block;margin:1.2rem 0 .4rem;font-weight:600}
+  pre{background:#111;color:#ddd;padding:12px;border-radius:8px;overflow:auto;white-space:pre-wrap}
+  button{height:38px;padding:0 18px;border-radius:8px;border:0;background:#3457ea;color:#fff;cursor:pointer;margin-top:1rem}
+</style>
+</head>
+<body>
+<h1>Textarea demo</h1>
+<form id="form">
+  <label for="article">Article (required)</label>
+  <!-- data-pro-editor enables the editor; data-pe-* configure it -->
+  <textarea id="article" name="article" data-pro-editor data-pe-height="260" required placeholder="Start writing..."></textarea>
+
+  <label for="summary">Summary (plain text is fine; no status bar, no video/audio/table/section)</label>
+  <textarea id="summary" name="summary" data-pro-editor data-pe-height="140" data-pe-hide="video,audio,table,section" data-pe-statusbar="false" data-pe-toolbar="standard">First line
+
+Second line</textarea>
+
+  <button>Submit</button>
+</form>
+<pre id="out">—</pre>
+
+<script>
+  // Global options for the auto build (optional). Must come before the script below.
+  window.PRO_EDITOR_OPTIONS = {
+    // fileManager: (type, ctx) => MyMedia.open(type).then((f) => f && { url: f.url, alt: f.title }),
+  };
+</script>
+<!-- The auto build enhances every <textarea data-pro-editor> once it loads -->
+<script src="../dist/pro-editor.auto.umd.js"></script>
+<script>
+  document.getElementById("form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    document.getElementById("out").textContent = JSON.stringify(Object.fromEntries(new FormData(e.target)), null, 2);
+  });
+</script>
+</body>
+</html>

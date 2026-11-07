@@ -1,0 +1,13 @@
+<!doctype html><html lang="en" dir="ltr"><head><meta charset="utf-8"><link rel="stylesheet" href="/dist/pro-editor.css"></head><body>
+<form id="f" action="javascript:void(0)">
+  <label for="a">Article body</label>
+  <textarea id="a" name="body" required rows="8" placeholder="Write here">Plain text
+
+Second paragraph &amp; more</textarea>
+  <textarea id="b" name="b" class="wysiwyg" data-pe-height="180" data-pe-hide="audio,video" data-pe-theme="dark"><p>hello</p></textarea>
+  <textarea id="c" name="c" class="wysiwyg" disabled><p>off</p></textarea>
+  <textarea id="x" name="x" class="wysiwyg"><p>ok</p><img src="x" onerror="alert(1)" alt=""><script>alert(1)</script><a href="javascript:alert(1)">bad</a></textarea>
+  <button id="send">Send</button>
+</form>
+<script src="/dist/pro-editor.umd.min.js"></script>
+</body></html>

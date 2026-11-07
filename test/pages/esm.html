@@ -1,0 +1,6 @@
+<!doctype html><html dir="ltr"><head><meta charset="utf-8"><link rel="stylesheet" href="/dist/pro-editor.css"></head><body>
+<textarea id="t"><p>esm</p></textarea>
+<script type="module">
+  import ProEditor, { attach } from "/dist/pro-editor.esm.mjs";
+  window.__r = { same: ProEditor === window.ProEditor, n: attach("#t").length, ver: ProEditor.version };
+</script></body></html>

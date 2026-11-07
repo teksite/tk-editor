@@ -1,0 +1,70 @@
+{
+  "name": "pro-editor",
+  "version": "2.0.0",
+  "description": "Zero-dependency WYSIWYG editor that turns any textarea into a rich editor. RTL and LTR, responsive <picture> authoring with validated media queries, strict-CSP and Trusted Types safe.",
+  "keywords": [
+    "wysiwyg",
+    "editor",
+    "rich-text",
+    "textarea",
+    "rtl",
+    "contenteditable",
+    "picture",
+    "responsive-images",
+    "sanitizer",
+    "csp",
+    "trusted-types",
+    "zero-dependency"
+  ],
+  "license": "MIT",
+  "author": "",
+  "sideEffects": [
+    "./dist/auto.esm.mjs",
+    "./dist/auto.cjs",
+    "./dist/*.umd*.js",
+    "**/*.css"
+  ],
+  "main": "./dist/pro-editor.cjs",
+  "module": "./dist/pro-editor.esm.mjs",
+  "browser": "./dist/pro-editor.umd.js",
+  "unpkg": "./dist/pro-editor.umd.min.js",
+  "jsdelivr": "./dist/pro-editor.umd.min.js",
+  "style": "./dist/pro-editor.css",
+  "types": "./types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./types/index.d.ts",
+      "import": "./dist/pro-editor.esm.mjs",
+      "require": "./dist/pro-editor.cjs",
+      "default": "./dist/pro-editor.esm.mjs"
+    },
+    "./auto": {
+      "types": "./types/auto.d.ts",
+      "import": "./dist/auto.esm.mjs",
+      "require": "./dist/auto.cjs",
+      "default": "./dist/auto.esm.mjs"
+    },
+    "./css": "./dist/pro-editor.css",
+    "./style.css": "./dist/pro-editor.css",
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "types",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node scripts/build.mjs && node test/run.mjs",
+    "prepack": "node scripts/build.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.56.0",
+    "terser": "^5.31.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
