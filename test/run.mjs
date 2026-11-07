@@ -13,13 +13,13 @@ const require = createRequire(import.meta.url);
 /* ---------- 1) SSR / Node (no window) ---------- */
 console.log("\n=== package: SSR / exports");
 {
-  const cjs = require(join(root, "dist/pro-editor.cjs"));
+  const cjs = require(join(root, "dist/tk-editor.cjs"));
   check("CJS: require without a window does not crash", typeof cjs === "function" && cjs.default === cjs && typeof cjs.attach === "function");
   let msg = "";
   try { new cjs("#x"); } catch (e) { msg = e.message; }
   check("SSR: constructing an editor throws a helpful error", /only works in a browser/.test(msg), msg);
   check("SSR: attach / get / observe are harmless", Array.isArray(cjs.attach("textarea")) && cjs.get(null) === null && typeof cjs.observe("x").disconnect === "function");
-  const esm = await import(pathToFileURL(join(root, "dist/pro-editor.esm.mjs")).href);
+  const esm = await import(pathToFileURL(join(root, "dist/tk-editor.esm.mjs")).href);
   check("ESM: import without a window does not crash + named exports", typeof esm.default === "function" && esm.ProEditor === esm.default && typeof esm.attach === "function" && typeof esm.version === "string");
   require(join(root, "dist/auto.cjs"));
   const a = await import(pathToFileURL(join(root, "dist/auto.esm.mjs")).href);
@@ -129,7 +129,7 @@ console.log("\n=== package: ESM and auto builds");
   check("no errors (ESM)", pg.errs.length === 0, pg.errs); await pg.close();
   pg = await newPage(); await pg.goto(base + "/page/auto-esm.html"); await sleep(700);
   const a = await pg.evaluate(() => ({ hosts: document.querySelectorAll(".pe-host").length, h: ProEditor.get(document.getElementById("t")) && ProEditor.get(document.getElementById("t")).options.minHeight, n: ProEditor.get(document.getElementById("n")) }));
-  check("auto.esm: only data-pro-editor textareas are enhanced", a.hosts === 1 && a.h === 222 && a.n === null, a);
+  check("auto.esm: only data-tk-editor textareas are enhanced", a.hosts === 1 && a.h === 222 && a.n === null, a);
   check("no errors (auto ESM)", pg.errs.length === 0, pg.errs); await pg.close();
   pg = await newPage(); await pg.goto(base + "/page/auto-umd.html"); await sleep(700);
   const u = await pg.evaluate(() => ({ hosts: document.querySelectorAll(".pe-host").length, sb: ProEditor.get(document.getElementById("t")).options.statusbar }));

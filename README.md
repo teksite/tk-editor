@@ -1,30 +1,30 @@
-# pro-editor
+# tk-editor
 
 A zero-dependency WYSIWYG editor that turns any `<textarea>` into a rich editor with one line of code.
 Plain HTML / CSS / JS, no `document.execCommand`, RTL and LTR, responsive `<picture>` authoring,
 and a sanitizer that works under a strict CSP with Trusted Types.
 
-- **~46 KB gzipped** JS + **~4 KB** CSS (`dist/pro-editor.umd.min.js`, `dist/pro-editor.min.css`), no runtime dependencies.
+- **~46 KB gzipped** JS + **~4 KB** CSS (`dist/tk-editor.umd.min.js`, `dist/tk-editor.min.css`), no runtime dependencies.
 - Your form and backend stay unchanged: the textarea keeps its `name` and always holds sanitized HTML.
 - ESM, CommonJS and UMD builds, TypeScript types, SSR-safe import.
 
 ## Install
 
 ```bash
-npm  i pro-editor
-pnpm add pro-editor
-yarn add pro-editor
+npm  i tk-editor
+pnpm add tk-editor
+yarn add tk-editor
 ```
 
-> Change the package `name` in `package.json` before publishing (for example `@your-scope/pro-editor`).
+> Change the package `name` in `package.json` before publishing (for example `@your-scope/tk-editor`).
 
 ## Three ways to use it
 
 ### 1. With JavaScript (Vite, webpack, Next, ...)
 
 ```js
-import ProEditor from "pro-editor";
-import "pro-editor/css";
+import ProEditor from "tk-editor";
+import "tk-editor/css";
 
 ProEditor.attach("textarea.wysiwyg", { minHeight: 300 });                 // every matching textarea
 ProEditor.attach(document.querySelector("#body"));                        // one element
@@ -34,11 +34,11 @@ ProEditor.attach(".wysiwyg", (ta) => ({ minHeight: ta.rows * 24 }));      // opt
 ### 2. Automatic, with data attributes
 
 ```js
-import "pro-editor/auto";   // or the pro-editor.auto.umd.min.js script
-import "pro-editor/css";
+import "tk-editor/auto";   // or the tk-editor.auto.umd.min.js script
+import "tk-editor/css";
 ```
 ```html
-<textarea name="body" data-pro-editor data-pe-height="320" data-pe-hide="audio,video"></textarea>
+<textarea name="body" data-tk-editor data-pe-height="320" data-pe-hide="audio,video"></textarea>
 ```
 Textareas added later (AJAX, modals, frameworks) are enhanced automatically, and the editor is released when the
 textarea is removed from the page (no memory leaks).
@@ -46,11 +46,11 @@ textarea is removed from the page (no memory leaks).
 ### 3. No bundler (CDN)
 
 ```html
-<link rel="stylesheet" href="https://unpkg.com/pro-editor/dist/pro-editor.min.css">
-<script src="https://unpkg.com/pro-editor/dist/pro-editor.auto.umd.min.js"></script>
-<textarea name="body" data-pro-editor></textarea>
+<link rel="stylesheet" href="https://unpkg.com/tk-editor/dist/tk-editor.min.css">
+<script src="https://unpkg.com/tk-editor/dist/tk-editor.auto.umd.min.js"></script>
+<textarea name="body" data-tk-editor></textarea>
 ```
-Without auto-init use `pro-editor.umd.min.js` and call `ProEditor.attach("textarea")`.
+Without auto-init use `tk-editor.umd.min.js` and call `ProEditor.attach("textarea")`.
 
 ## How textareas behave
 
@@ -67,7 +67,7 @@ Without auto-init use `pro-editor.umd.min.js` and call `ProEditor.attach("textar
 
 | Attribute | Meaning |
 |---|---|
-| `data-pro-editor` | enable (auto build) |
+| `data-tk-editor` | enable (auto build) |
 | `data-pe-height="320"` / `data-pe-max-height="700"` | min / max height |
 | `data-pe-theme="auto｜light｜dark"` | theme |
 | `data-pe-toolbar="full｜standard｜minimal"` | toolbar preset |
@@ -187,7 +187,7 @@ Without `fileManager` every button opens a dialog with direct URL entry. With it
 - `allowData: false` drops every `data-*` attribute (some frameworks run behavior from them).
 - Content is re-sanitized on paste, drop, `setHTML`, source-view edits and on every `getHTML()`.
 - The editing iframe is sandboxed without `allow-scripts`.
-- **Strict CSP / Trusted Types:** the editor writes no `style=""` attributes, injects its iframe CSS through constructable stylesheets, and wraps every `innerHTML` assignment in a `pro-editor` Trusted Types policy. Allow it with `trusted-types pro-editor`. Tested with `script-src 'self'; style-src 'self'; require-trusted-types-for 'script'`. (`nonce` covers the rare browsers without constructable stylesheets.)
+- **Strict CSP / Trusted Types:** the editor writes no `style=""` attributes, injects its iframe CSS through constructable stylesheets, and wraps every `innerHTML` assignment in a `tk-editor` Trusted Types policy. Allow it with `trusted-types tk-editor`. Tested with `script-src 'self'; style-src 'self'; require-trusted-types-for 'script'`. (`nonce` covers the rare browsers without constructable stylesheets.)
 
 > This is a client-side defense layer. **Always sanitize the HTML again on the server** before storing or rendering it.
 
@@ -198,8 +198,8 @@ Importing the package on the server is safe (constructing an editor there throws
 ```jsx
 // React
 import { useEffect, useRef } from "react";
-import ProEditor from "pro-editor";
-import "pro-editor/css";
+import ProEditor from "tk-editor";
+import "tk-editor/css";
 
 export function RichTextarea(props) {
   const ref = useRef(null);
@@ -214,8 +214,8 @@ export function RichTextarea(props) {
 <!-- Vue 3 -->
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from "vue";
-import ProEditor from "pro-editor";
-import "pro-editor/css";
+import ProEditor from "tk-editor";
+import "tk-editor/css";
 const ta = ref(null);
 let editor;
 onMounted(() => ([editor] = ProEditor.attach(ta.value)));
@@ -229,14 +229,14 @@ In Next.js add `"use client"` and use the same `useEffect` pattern. (These are s
 
 I looked at how other editors are built to decide what to include and what to leave out. Check each project's own documentation for their current details.
 
-| Project | Approach | Where `pro-editor` differs |
+| Project | Approach | Where `tk-editor` differs |
 |---|---|---|
 | TinyMCE, CKEditor 5 | Full-featured platforms with large plugin ecosystems and (optional, often commercial) collaboration | Far smaller, a drop-in textarea enhancer with no plugin ecosystem and no collaboration |
 | TipTap / ProseMirror | A schema-based document model; very flexible, you assemble the editor from extensions | Edits the real DOM and exports HTML directly, so there is no schema to learn; far fewer extension points |
 | Quill, Lexical, Trix | Their own document models (deltas, node trees, attachments) converted to HTML | The HTML *is* the model, which keeps `<picture>`, `<pre>`, containers and custom attributes exact |
 | Summernote, Pell | Older / minimal editors; Pell and many older ones rely on the deprecated `execCommand` | No `execCommand`; own range-based engine with undo that restores the caret |
 
-What `pro-editor` focuses on: a dependency-free drop-in for textareas, authoring of `<picture>` with validated media queries,
+What `tk-editor` focuses on: a dependency-free drop-in for textareas, authoring of `<picture>` with validated media queries,
 RTL-first behavior, strict CSP / Trusted Types compatibility, and an allow-list sanitizer built in.
 
 What it does **not** have: real-time collaboration, comments / track changes, mentions, a slash menu, image captions

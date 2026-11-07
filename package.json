@@ -1,5 +1,5 @@
 {
-  "name": "pro-editor",
+  "name": "tk-editor",
   "version": "2.0.0",
   "description": "Zero-dependency WYSIWYG editor that turns any textarea into a rich editor. RTL and LTR, responsive <picture> authoring with validated media queries, strict-CSP and Trusted Types safe.",
   "keywords": [
@@ -24,19 +24,19 @@
     "./dist/*.umd*.js",
     "**/*.css"
   ],
-  "main": "./dist/pro-editor.cjs",
-  "module": "./dist/pro-editor.esm.mjs",
-  "browser": "./dist/pro-editor.umd.js",
-  "unpkg": "./dist/pro-editor.umd.min.js",
-  "jsdelivr": "./dist/pro-editor.umd.min.js",
-  "style": "./dist/pro-editor.css",
+  "main": "./dist/tk-editor.cjs",
+  "module": "./dist/tk-editor.esm.mjs",
+  "browser": "./dist/tk-editor.umd.js",
+  "unpkg": "./dist/tk-editor.umd.min.js",
+  "jsdelivr": "./dist/tk-editor.umd.min.js",
+  "style": "./dist/tk-editor.css",
   "types": "./types/index.d.ts",
   "exports": {
     ".": {
       "types": "./types/index.d.ts",
-      "import": "./dist/pro-editor.esm.mjs",
-      "require": "./dist/pro-editor.cjs",
-      "default": "./dist/pro-editor.esm.mjs"
+      "import": "./dist/tk-editor.esm.mjs",
+      "require": "./dist/tk-editor.cjs",
+      "default": "./dist/tk-editor.esm.mjs"
     },
     "./auto": {
       "types": "./types/auto.d.ts",
@@ -44,8 +44,8 @@
       "require": "./dist/auto.cjs",
       "default": "./dist/auto.esm.mjs"
     },
-    "./css": "./dist/pro-editor.css",
-    "./style.css": "./dist/pro-editor.css",
+    "./css": "./dist/tk-editor.css",
+    "./style.css": "./dist/tk-editor.css",
     "./dist/*": "./dist/*",
     "./package.json": "./package.json"
   },

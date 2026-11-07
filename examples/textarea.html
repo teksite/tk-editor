@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ProEditor — turn a textarea into a WYSIWYG editor</title>
-<link rel="stylesheet" href="../dist/pro-editor.css" />
+<link rel="stylesheet" href="../dist/tk-editor.css" />
 <style>
   body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;max-width:860px;margin:2rem auto;padding:0 1rem}
   label{display:block;margin:1.2rem 0 .4rem;font-weight:600}
@@ -16,11 +16,11 @@
 <h1>Textarea demo</h1>
 <form id="form">
   <label for="article">Article (required)</label>
-  <!-- data-pro-editor enables the editor; data-pe-* configure it -->
-  <textarea id="article" name="article" data-pro-editor data-pe-height="260" required placeholder="Start writing..."></textarea>
+  <!-- data-tk-editor enables the editor; data-pe-* configure it -->
+  <textarea id="article" name="article" data-tk-editor data-pe-height="260" required placeholder="Start writing..."></textarea>
 
   <label for="summary">Summary (plain text is fine; no status bar, no video/audio/table/section)</label>
-  <textarea id="summary" name="summary" data-pro-editor data-pe-height="140" data-pe-hide="video,audio,table,section" data-pe-statusbar="false" data-pe-toolbar="standard">First line
+  <textarea id="summary" name="summary" data-tk-editor data-pe-height="140" data-pe-hide="video,audio,table,section" data-pe-statusbar="false" data-pe-toolbar="standard">First line
 
 Second line</textarea>
 
@@ -34,8 +34,8 @@ Second line</textarea>
     // fileManager: (type, ctx) => MyMedia.open(type).then((f) => f && { url: f.url, alt: f.title }),
   };
 </script>
-<!-- The auto build enhances every <textarea data-pro-editor> once it loads -->
-<script src="../dist/pro-editor.auto.umd.js"></script>
+<!-- The auto build enhances every <textarea data-tk-editor> once it loads -->
+<script src="../dist/tk-editor.auto.umd.js"></script>
 <script>
   document.getElementById("form").addEventListener("submit", (e) => {
     e.preventDefault();

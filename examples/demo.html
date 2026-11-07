@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ProEditor demo</title>
-<link rel="stylesheet" href="../dist/pro-editor.css" />
+<link rel="stylesheet" href="../dist/tk-editor.css" />
 <style>
   :root { color-scheme: light dark; --bg:#f2f3f5; --card:#fff; --text:#1f2328; --muted:#6b7280; }
   @media (prefers-color-scheme: dark) { :root { --bg:#0f1115; --card:#16181d; --text:#e6e8ee; --muted:#9aa1b2; } }
@@ -49,12 +49,12 @@
   </div>
 </div>
 
-<script src="../dist/pro-editor.umd.js"></script>
+<script src="../dist/tk-editor.umd.js"></script>
 <script>
   // Mock media manager. In a real project call your own file picker and resolve { url, alt?, width?, height? } (or null).
   function mockFileManager(type, ctx) {
     const samples = {
-      image: { url: "https://picsum.photos/seed/pro-editor/1200/800", alt: "Sample landscape", width: 1200, height: 800 },
+      image: { url: "https://picsum.photos/seed/tk-editor/1200/800", alt: "Sample landscape", width: 1200, height: 800 },
       video: { url: "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" },
       audio: { url: "https://interactive-examples.mdn.mozilla.net/media/cc0-audio/t-rex-roar.mp3" },
     };

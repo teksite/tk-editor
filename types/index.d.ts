@@ -97,7 +97,7 @@ export default class ProEditor {
   static detach(target: AttachTarget): void;
   /** Like attach, but also enhances textareas added later and releases editors of removed ones */
   static observe(selector: string, options?: AttachOptions): Observation;
-  /** observe('textarea[data-pro-editor]') once the DOM is ready. Global options: window.PRO_EDITOR_OPTIONS */
+  /** observe('textarea[data-tk-editor]') once the DOM is ready. Global options: window.PRO_EDITOR_OPTIONS */
   static autoInit(options?: ProEditorOptions): void;
   /** Register a UI language: ProEditor.registerLocale("xx", { bold: "..." }) */
   static registerLocale(name: string, messages: Record<string, string>): void;

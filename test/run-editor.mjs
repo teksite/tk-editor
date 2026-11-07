@@ -8,7 +8,7 @@ import { results } from "./lib.mjs";
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const MIME = { ".html": "text/html; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".mjs": "text/javascript; charset=utf-8", ".css": "text/css" };
-const CSP_PAGE = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; frame-src 'self'; require-trusted-types-for 'script'; trusted-types pro-editor";
+const CSP_PAGE = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; frame-src 'self'; require-trusted-types-for 'script'; trusted-types tk-editor";
 
 export async function startServer() {
   const server = createServer((req, res) => {

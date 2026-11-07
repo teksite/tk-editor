@@ -1,7 +1,7 @@
 import { check } from "../lib.mjs";
 
 // The page is served with a strict CSP header: no inline scripts/styles and Trusted Types enforced
-// (only the "pro-editor" policy is allowed). The editor must work without a single violation.
+// (only the "tk-editor" policy is allowed). The editor must work without a single violation.
 export async function run(ctx) {
   const page = await ctx.browser.newPage({ viewport: { width: 1000, height: 800 } });
   const errs = [];
