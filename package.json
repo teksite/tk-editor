@@ -1,5 +1,5 @@
 {
-  "name": "tk-editor",
+ "name": "@teksite/tk-editor",
   "version": "1.0.0",
   "description": "Zero-dependency WYSIWYG editor that turns any textarea into a rich editor. RTL and LTR, responsive <picture> authoring with validated media queries, strict-CSP and Trusted Types safe.",
   "keywords": [
