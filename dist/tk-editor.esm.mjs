@@ -1,8 +1,8 @@
-/*! ProEditor v2.0.0 | MIT | zero-dependency WYSIWYG */
+/*! ProEditor v1.0.0 | MIT | zero-dependency WYSIWYG */
 const factory = function (window) {
   function serverStub() {
     function ProEditor() { throw new Error("ProEditor only works in a browser. During SSR call it inside useEffect / onMounted / a dynamic import (ssr:false)."); }
-    ProEditor.version = "2.0.0";
+    ProEditor.version = "1.0.0";
     ProEditor.attach = function () { return []; };
     ProEditor.get = function () { return null; };
     ProEditor.detach = function () {};
@@ -11,7 +11,7 @@ const factory = function (window) {
     return ProEditor;
   }
   if (!window || !window.document) return serverStub();
-  if (window.ProEditor && window.ProEditor.version === "2.0.0") return window.ProEditor; // do not initialize twice
+  if (window.ProEditor && window.ProEditor.version === "1.0.0") return window.ProEditor; // do not initialize twice
 /*!
  * tk-editor.icons.js
  * ------------------------------------------------------------------
@@ -2226,7 +2226,7 @@ ${labels}
   };
 
   /* ---------- statics ---------- */
-  ProEditor.version = "2.0.0";
+  ProEditor.version = "1.0.0";
   ProEditor.TOOLBARS = TOOLBARS;
   ProEditor._buttons = {};
   ProEditor.CONTAINER_TAGS = CONTAINER_TAGS;

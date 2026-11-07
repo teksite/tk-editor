@@ -125,7 +125,7 @@ console.log("\n=== package: ESM and auto builds");
 {
   let pg = await newPage(); await pg.goto(base + "/page/esm.html"); await sleep(500);
   const r = await pg.evaluate(() => window.__r);
-  check("ESM in the browser: import + attach", r && r.same && r.n === 1 && r.ver === "2.0.0", r);
+  check("ESM in the browser: import + attach", r && r.same && r.n === 1 && r.ver === "1.0.0", r);
   check("no errors (ESM)", pg.errs.length === 0, pg.errs); await pg.close();
   pg = await newPage(); await pg.goto(base + "/page/auto-esm.html"); await sleep(700);
   const a = await pg.evaluate(() => ({ hosts: document.querySelectorAll(".pe-host").length, h: ProEditor.get(document.getElementById("t")) && ProEditor.get(document.getElementById("t")).options.minHeight, n: ProEditor.get(document.getElementById("n")) }));
